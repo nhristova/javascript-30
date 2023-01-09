@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Drum Kit - day 1 #JavaScript30</title>
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
   <main class="keys">
     <div class="key" data-key="65">
@@ -62,6 +64,35 @@
   <audio data-key="74" src="sounds/snare.wav"></audio>
   <audio data-key="75" src="sounds/tom.wav"></audio>
   <audio data-key="76" src="sounds/tink.wav"></audio>
-  
+
+  <script>
+    const playSound = (event) => {
+      const audio = document.querySelector(`audio[data-key="${event.keyCode}"]`);
+
+      // do nothing for keys not listed on page
+      if (!audio) {
+        return;
+      }
+
+      audio.currentTime = 0;
+      audio.play();
+
+      document.querySelector(`.key[data-key="${event.keyCode}"]`)
+        .classList.add('playing');
+    };
+
+    const removePlaying = (event) => {
+      // skip all other transitions except transform
+      if (event.propertyName !== 'transform') {
+        return;
+      }
+
+      event.target.classList.remove('playing');
+    }
+
+    document.addEventListener('keydown', playSound);
+    document.addEventListener('transitionend', removePlaying);
+  </script>
 </body>
+
 </html>
