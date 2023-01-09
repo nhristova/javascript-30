@@ -1,6 +1,7 @@
 html {
   font-size: 24px;
   background-color: #646464;
+  background: url('./background.jpg');
 }
 
 body, html {
@@ -27,6 +28,7 @@ body, html {
   margin: .5rem;
   text-align: center;
   color: #FFF;
+  background: rgba(43, 43, 43, 0.4);
   transition: all .07s ease;
 }
 
