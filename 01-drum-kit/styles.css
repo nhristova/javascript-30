@@ -32,6 +32,10 @@ body, html {
   transition: all .07s ease;
 }
 
+.key:hover {
+  cursor: pointer;
+}
+
 .sound {
   text-transform: uppercase;
   font-size: 0.4rem;
