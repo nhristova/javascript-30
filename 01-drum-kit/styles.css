@@ -1,13 +1,21 @@
 * {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 24px;
+}
+
+body {
+  background-color: #646464;
 }
 
 .keys {
   display: flex;
+  justify-content: center;
+  margin-top: 45vh;
+  flex-wrap: wrap;
 }
 
 .key {
-  min-width: 40px;
+  min-width: 50px;
   display: flex;
   flex-direction: column;
   border-radius: 3px;
@@ -15,9 +23,11 @@
   padding: 5px;
   margin: 5px;
   text-align: center;
+  color: #FFF;
 }
 
 .key span {
   text-transform: uppercase;
-  font-size: 0.75em;
+  font-size: 0.5em;
+  color:#ffbb00;
 }
