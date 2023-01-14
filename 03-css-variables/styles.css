@@ -31,10 +31,11 @@ h2 {
 }
 
 .photo-container {
-  width: var(--size);
+  /* width: var(--size); */
   height: var(--size);
-  margin: auto;
-  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: content-box;
   background-color: var(--colour);
   /* background: url(https://source.unsplash.com/h9HxPKEdYbo/); */
   /* background-size: cover; */
