@@ -4,7 +4,8 @@
   --size: 50vmin;
   --blur: 0px;
   --radius: 50%;
-  --colour: #ffc600;
+  --colour:  #fff;
+  /* --colour:  #ffc600; */
 }
 
 body {

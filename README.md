@@ -3,6 +3,8 @@
 
 Starter code: https://github.com/wesbos/JavaScript30
 
+Static site: https://nhristova.github.io/javascript-30/ (GitHub Pages)
+
 List:
 
 - [x] 1.  JavaScript Drum Kit
