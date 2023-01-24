@@ -6,10 +6,10 @@ Starter code: https://github.com/wesbos/JavaScript30
 List:
 
 - [x] 1.  JavaScript Drum Kit
-- [ ] 2.  JS and CSS Clock
-- [ ] 3.  CSS Variables
-- [ ] 4.  Array Cardio Day 1
-- [ ] 5.  Flex Panel Gallery
+- [x] 2.  JS and CSS Clock
+- [x] 3.  CSS Variables
+- [x] 4.  Array Cardio Day 1
+- [x] 5.  Flex Panel Gallery
 - [ ] 6.  Type Ahead
 - [ ] 7.  Array Cardio Day 2
 - [ ] 8.  Fun with HTML5 Canvas
