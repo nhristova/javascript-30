@@ -6,6 +6,10 @@ html {
   text-align: center;
 }
 
+header svg {
+  vertical-align: middle;
+}
+
 main {
   display: flex;
   flex-wrap: wrap;
@@ -22,6 +26,7 @@ main {
   align-items: stretch;
   justify-content: center;
   border: 1px solid #d9d9d9;
+  border-radius: 3px;
   transition: all 0.5s ease-in-out;
 }
 
