@@ -15,10 +15,6 @@ header svg {
   vertical-align: middle;
 }
 
-body {
-  font-size: 3rem;
-}
-
 main {
   display: flex;
   flex-wrap: wrap;
@@ -79,43 +75,37 @@ a:active {
 }
 
 
-@media only screen and (min-device-width: 425px) {
+@media only screen and (min-width: 425px) {
   .project {
     --card-size: 45vw;
   }
-  body {
-    font-size: 2em;
-  }
 }
 
-@media only screen and (min-device-width: 640px) {
+@media only screen and (min-width: 640px) {
   .project {
     --card-size: 30vw;
   }
-  body {
-    font-size: unset;
-  }
 }
 
-@media only screen and (min-device-width: 1024px) {
+@media only screen and (min-width: 1024px) {
   .project {
     --card-size: 20vw;
   }
 }
 
-@media only screen and (min-device-width: 1280px) {
+@media only screen and (min-width: 1280px) {
   .project {
     --card-size: 15vw;
   }
 }
 
-@media only screen and (min-device-width: 1920px) {
+@media only screen and (min-width: 1920px) {
   main {
     width: 1280px;
     margin-inline: auto;
   }
 
   .project {
-    --card-size: 19%;
+    --card-size: 200px;
   }
 }
