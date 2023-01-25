@@ -14,13 +14,15 @@ body {
   background-color: #31647f;
   color: #fff;
   text-align: center;
+  font-size: 0.8rem;
+  margin: 50px 0 0 0;
 }
 
 h2 {
   font-size: 2rem;
   text-align: center;
   font-weight: 700;
-  margin-top: 50px;
+  margin: 70px 0 20px 0;
 }
 
 .highlight {
@@ -28,15 +30,16 @@ h2 {
 }
 
 .controls {
-  margin-block: 20px;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   display: grid;
+  width: 90vw;
+  margin-inline: auto;
 }
 
 .photo-container {
   /* width: var(--size); */
   height: var(--size);
-  margin: 0 auto;
+  margin: 20px auto;
   padding: 20px;
   box-sizing: content-box;
   background-color: var(--colour);
@@ -65,18 +68,18 @@ a:active {
 }
 
 footer {
-  position: absolute;
-  bottom: 0;
+  position: fixed;
+  bottom: 5px;
   width: 100vw;
 }
 
 @media only screen and (min-width: 640px) {
 
-
   .controls {
     grid-template-columns: repeat(4, 1fr);
     text-align: right;
     gap: 10px;
+    font-size: 1.5rem;
   }
 
   label {

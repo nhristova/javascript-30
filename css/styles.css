@@ -17,7 +17,9 @@ main {
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: 1fr;
-  gap: 10px;
+  gap: 20px;
+  width: 90vw;
+  margin-inline: auto;
 }
 
 .project {
@@ -66,7 +68,7 @@ a:active {
 }
 
 .hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 
