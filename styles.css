@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&display=swap');
 
-:root {
-  --card-size: 95vw;
-}
+
 
 html {
   font-family: 'Poppins', Arial, Helvetica, sans-serif;
@@ -16,15 +14,13 @@ header svg {
 }
 
 main {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 1fr;
   gap: 10px;
-  justify-content: center;
 }
 
 .project {
-  width: var(--card-size);
-  height: var(--card-size);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -39,7 +35,6 @@ main {
 img {
   flex: 3;
   width: 100%;
-  height: auto;
   overflow: hidden;
   object-fit: cover;
   object-position: 50% 60%;
@@ -76,26 +71,26 @@ a:active {
 
 
 @media only screen and (min-width: 425px) {
-  .project {
-    --card-size: calc(100vw / 2 - 15px);
+  main{
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media only screen and (min-width: 640px) {
-  .project {
-    --card-size: calc(100vw / 3 - 15px);
+  main{
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media only screen and (min-width: 1024px) {
-  .project {
-    --card-size: calc(100vw / 4 - 15px);
+  main {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
 @media only screen and (min-width: 1280px) {
-  .project {
-    --card-size: calc(100vw / 5 - 15px);
+  main {
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 
@@ -103,9 +98,5 @@ a:active {
   main {
     width: 1920px;
     margin-inline: auto;
-  }
-
-  .project {
-    --card-size: calc(115em / 5);
   }
 }
