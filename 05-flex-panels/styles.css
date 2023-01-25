@@ -11,6 +11,7 @@ body {
 
 .panels {
   display: flex;
+  flex-direction: column;
   height: 100vh;
   overflow: hidden;
 }
@@ -19,10 +20,10 @@ body {
   flex: 1;
   position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  transition: 
+  transition:
     font-size 0.7s cubic-bezier(0.19, 0.31, 0.7, -0.11),
     flex-grow 0.7s cubic-bezier(0.19, 0.31, 0.7, -0.11),
     background 0.2s;
@@ -32,11 +33,10 @@ body {
   cursor: pointer;
 }
 
-.panel > p {  
+.panel>p {
   margin: 0;
   padding: 10px;
   text-transform: uppercase;
-  font-size: 1.2em;
   transition: transform 0.5s;
   flex: 1;
   width: 100%;
@@ -57,40 +57,48 @@ body {
 .panel1 img {
   object-position: 60%;
 }
+
 .panel2 img {
   object-position: 35%;
 }
+
 .panel3 img {
   object-position: 65%;
 }
+
 .panel4 img {
   object-position: 52%;
 }
+
 .panel5 img {
   object-position: 70%;
 }
 
-.panel > p:nth-of-type(2) {
-  font-size: 2.5em;
+.panel>p:nth-of-type(2) {
+  font-size: 1.5em;
 }
 
-.panel > p:first-of-type {
-  transform: translateY(-100%);
+.panel>p:first-of-type {
+  transform: translateX(-100%);
 }
-.panel > p:last-child {
-  transform: translateY(100%);
+
+.panel>p:last-child {
+  transform: translateX(100%);
 }
-.active > p:first-of-type,
-.active > p:last-child {
+
+.active>p:first-of-type,
+.active>p:last-child {
   transform: translate(0);
 }
 
-.open { 
+.open {
   flex: 5;
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
-a, a:visited, a:active {
+a,
+a:visited,
+a:active {
   color: #fff;
 }
 
@@ -98,30 +106,40 @@ footer {
   position: fixed;
   bottom: 10px;
   right: 10px;
+  font-size: 0.8em;
 }
 
-/* Home link styles */
-header {
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  z-index: 1;
-}
+@media only screen and (min-width: 1024px) {
+  .panels {
+    flex-direction: row;
+  }
+  
+  .panel {
+    flex-direction: column;
+  }
 
-header a {
-  display: block;
-  width: 40px;
-  height: 40px;
-  background-color: #ffc600;
-  border-radius: 50%;
-  padding: 10px;
-  transition: all 0.5s ease-in-out;
-}
+  .panel>p:first-of-type {
+    transform: translateY(-100%) translateX(0);
+  }
 
-header a:hover {
-  transform: scale(1.1);
-}
+  .panel>p:last-child {
+    transform: translateY(100%) translateX(0);
+  }
 
-header img {
-  width: 100%;
+  .active>p:first-of-type,
+  .active>p:last-child {
+    transform: translate(0);
+  }
+
+  .panel>p:nth-of-type(2) {
+    font-size: 2em;
+  }
+
+  .open {
+    font-size: 2em;
+  }
+
+  footer {
+    font-size: 1em;
+  }
 }
