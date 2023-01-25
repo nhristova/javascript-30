@@ -77,35 +77,35 @@ a:active {
 
 @media only screen and (min-width: 425px) {
   .project {
-    --card-size: 45vw;
+    --card-size: calc(100vw / 2 - 15px);
   }
 }
 
 @media only screen and (min-width: 640px) {
   .project {
-    --card-size: 30vw;
+    --card-size: calc(100vw / 3 - 15px);
   }
 }
 
 @media only screen and (min-width: 1024px) {
   .project {
-    --card-size: 20vw;
+    --card-size: calc(100vw / 4 - 15px);
   }
 }
 
 @media only screen and (min-width: 1280px) {
   .project {
-    --card-size: 15vw;
+    --card-size: calc(100vw / 5 - 15px);
   }
 }
 
 @media only screen and (min-width: 1920px) {
   main {
-    width: 1280px;
+    width: 1920px;
     margin-inline: auto;
   }
 
   .project {
-    --card-size: 200px;
+    --card-size: calc(115em / 5);
   }
 }
