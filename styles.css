@@ -1,8 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&display=swap');
 
+:root {
+  --card-size: 95vw;
+}
+
 html {
   font-family: 'Poppins', Arial, Helvetica, sans-serif;
   font-weight: 400;
+  font-size: 16px;
   text-align: center;
 }
 
@@ -10,16 +15,20 @@ header svg {
   vertical-align: middle;
 }
 
+body {
+  font-size: 3rem;
+}
+
 main {
   display: flex;
   flex-wrap: wrap;
+  gap: 10px;
   justify-content: center;
 }
 
 .project {
-  width: 15vw;
-  height: 25vh;
-  margin: 10px;
+  width: var(--card-size);
+  height: var(--card-size);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -27,6 +36,7 @@ main {
   justify-content: center;
   border: 1px solid #d9d9d9;
   border-radius: 3px;
+  box-sizing: border-box;
   transition: all 0.5s ease-in-out;
 }
 
@@ -54,7 +64,8 @@ img {
   justify-content: center;
 }
 
-a, a:visited {
+a,
+a:visited {
   text-decoration: none;
   color: #717171;
 }
@@ -65,4 +76,46 @@ a:active {
 
 .hover {
   transform: scale(1.1);
+}
+
+
+@media only screen and (min-device-width: 425px) {
+  .project {
+    --card-size: 45vw;
+  }
+  body {
+    font-size: 2em;
+  }
+}
+
+@media only screen and (min-device-width: 640px) {
+  .project {
+    --card-size: 30vw;
+  }
+  body {
+    font-size: unset;
+  }
+}
+
+@media only screen and (min-device-width: 1024px) {
+  .project {
+    --card-size: 20vw;
+  }
+}
+
+@media only screen and (min-device-width: 1280px) {
+  .project {
+    --card-size: 15vw;
+  }
+}
+
+@media only screen and (min-device-width: 1920px) {
+  main {
+    width: 1280px;
+    margin-inline: auto;
+  }
+
+  .project {
+    --card-size: 19%;
+  }
 }

@@ -28,6 +28,10 @@ body {
     background 0.2s;
 }
 
+.panel:hover {
+  cursor: pointer;
+}
+
 .panel > p {  
   margin: 0;
   padding: 10px;
@@ -84,6 +88,10 @@ body {
 .open { 
   flex: 5;
   font-size: 2em;
+}
+
+a, a:visited, a:active {
+  color: #fff;
 }
 
 footer {
