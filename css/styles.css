@@ -1,16 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&display=swap');
-
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
 
 html {
   font-family: 'Poppins', Arial, Helvetica, sans-serif;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 18px;
   text-align: center;
 }
 
 header svg {
   vertical-align: middle;
+}
+
+header h1 {
+  margin: 10px 0;
 }
 
 main {
