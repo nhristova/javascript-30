@@ -27,19 +27,33 @@ fetch(endpoint)
     cities = data;
   });
 
-const findMatches = (e) => {
-  const searchTerm = e.target.value;
-  const filtered = cities.filter(c => c.city.toLowerCase().includes(searchTerm) || c.state.toLowerCase().includes(searchTerm));
-
-  const elements = filtered.reduce((html, r) => {
-
-
-    return `${html}
-      <li class="city"><div>${r.city}, ${r.state}</div><div class="population">${Number(r.population).toLocaleString()}</div></li>`
-  }, '');
-
-  document.getElementById('results').innerHTML = elements;
-
+const findMatches = (searchTerm, collection) => {
+  /*
+  const regex = new RegExp(searchTerm, 'gi')
+  return collection.filter(c => c.city.match(regex) || c.state.match(regex))
+  */
+  return collection.filter(c => c.city.toLowerCase().includes(searchTerm) || c.state.toLowerCase().includes(searchTerm));
 }
 
-document.getElementById('search').addEventListener('input', findMatches);
+const displayMatches = function () {
+  const matches = findMatches(this.value, cities);
+  const elements = matches.reduce((html, c) => {
+    const regex = new RegExp(this.value, 'gi');
+    const cityName = c.city.replace(regex, `<span class="hl">${this.value}</span>`);
+    const stateName = c.state.replace(regex, `<span class="hl">${this.value}</span>`);
+
+    return `${html}
+      <li class="city">
+        <span>${cityName}, ${stateName}</span>
+        <span class="population">${Number(c.population).toLocaleString()}</span>
+      </li>`
+  }, '');
+
+  results.innerHTML = elements;
+}
+
+const search = document.getElementById('search')
+const results = document.getElementById('results');
+
+search.focus();
+search.addEventListener('input', displayMatches);

@@ -1,45 +1,58 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;700&display=swap');
+@import '../css/variables.css';
 
 html {
-  background-color: #193549e5;
+  background-color: var(--blue);
 }
 
 body {
   font-family: 'Poppins', Arial, Helvetica, sans-serif;
   font-weight: 200;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 100px;
 }
 
+.container {
+  width: 90vw;
+  max-width: 500px;
+}
+
 .search {
-  width: 40vw;
+  width: 100%;
   font-size: 2.8em;
   border-radius: 3px;
-  border: none;
-  outline: 3px solid #EFEFEF;
+  box-sizing: border-box;
+  border: 3px solid #EFEFEF;
+  outline: none;
   padding: 10px 20px;
 }
 
 .search:focus, .search:active {
-  outline: 5px solid #EFEFEF;
+  outline: none;
+  border: 5px solid #EFEFEF;
 }
 
 .list {
   margin: 3px 0;
-  padding: 0;
+  padding: 0 30px;
   font-size: 1.4em;
+  text-transform: capitalize;
+}
+
+ul li {
+  list-style: none;
 }
 
 .city {
-  width: 40vw;
-  margin: 1px 0;
-  padding: 5px 10px;
+  margin: 0;
+  padding: 10px 20px;
+  transition: background 0.2s;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
 }
 
 .city:nth-of-type(odd) {
@@ -53,5 +66,9 @@ body {
 }
 
 .population {
-  font-size: 0.7em;
+  font-size: 0.8em;
+}
+
+.hl {
+  background-color: var(--yellow);
 }
