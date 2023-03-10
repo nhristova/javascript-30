@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap');
+@import '../css/variables.css';
+
+html {
+  background-color: var(--blue);
+  --radius: 5px;
+}
+
+body {
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  font-weight: 300;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h2 {
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 700;
+  margin: 70px 0 20px 0;
+  color: #fff;
+}
+
+input {
+  font-size: 1em;
+  border-radius: 5px;
+  box-sizing: border-box;
+  border: 1px solid #EFEFEF;
+  outline: none;
+  padding: 6px 15px;
+}
+
+select {
+  padding: 5px;
+  font-size: 1em;
+  border-radius: 5px;
+}
+
+button {
+  padding: 2px 15px;
+  border: 1px solid #EFEFEF;
+  border-radius: 5px;
+  font-size: 1em;
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;;
+}
+
+
+.data-list {
+  min-width: 300px;
+  width: 100%;
+  margin-top: 10px;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.data-list th {
+  background-color: var(--yellow);
+  color: var(--blue);
+  font-weight: 700;
+  text-align: left;
+}
+
+.data-list th,
+.data-list td {
+  border: 1px solid var(--blue);
+  padding: 5px 15px;
+}
+
+.data-list tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.data-list tr:nth-child(odd) {
+  background-color: #fff;
+}
+
+.data-list tr:hover {
+  background-color: #ddd;
+}
+
+/* Border radius */
+table tr:first-child th:first-child {
+  border-top-left-radius: var(--radius);
+}
+
+table tr:first-child th:last-child {
+  border-top-right-radius: var(--radius);
+}
+
+table tr:last-child td:first-child {
+  border-bottom-left-radius: var(--radius);
+}
+
+table tr:last-child td:last-child {
+  border-bottom-right-radius: var(--radius);
+}
+
+.error {
+  color: #f44336;
+  margin: 5px 0;
+}
+
+.result {
+  color: #4caf50;
+  margin: 5px 0;
+}
