@@ -110,9 +110,10 @@ const searchComments = function (event) {
   }
 
   const result = commentsCurr[action](c => c.id.toString().includes(input) || c.text.includes(input));
-
-  if (result === undefined) {
+  
+  if (!result || result === -1 || result.length === 0) {
     containerMsgComments.innerHTML = messagesComments.none(input);
+    return;
   } else {
     containerMsgComments.innerHTML = messagesComments[action](input, result);
   }
