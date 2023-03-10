@@ -87,6 +87,7 @@ const messagesComments = {
   findIndex: (value, data) => `Element containing '${value}' is at index: ${data}`,
   filter: (value, data) => `Found ${data.length} elements containing '${value}'`,
   none: (value) => `<p class="error">No results for search value '${value}'</p>`,
+  empty: 'Input must not be empty',
 };
 
 const containerMsgComments = document.getElementById('results-comments');
@@ -99,6 +100,12 @@ const searchComments = function (event) {
   if (action === 'reset') {
     commentsCurr = comments;
     commentsTable.innerHTML = getCommentsHtml(commentsCurr);
+    containerMsgComments.innerHTML = '';
+    return;
+  }
+
+  if (!input) {
+    containerMsgComments.innerHTML = messagesComments.empty;
     return;
   }
 
@@ -109,8 +116,6 @@ const searchComments = function (event) {
   } else {
     containerMsgComments.innerHTML = messagesComments[action](input, result);
   }
-
-  console.log(result);
   
   if (Array.isArray(result)) {
     commentsCurr = result;
@@ -123,13 +128,10 @@ const searchComments = function (event) {
 const deleteComment = function (event) {
   const id = event.target.getAttribute('data-id');
   
-  if (!id) {
-    return;
+  if (id) { 
+    commentsCurr = commentsCurr.filter(c => c.id !== +id);
+    commentsTable.innerHTML = getCommentsHtml(commentsCurr);
   }
-
-  commentsCurr = commentsCurr.filter(c => c.id !== +id);
-  commentsTable.innerHTML = getCommentsHtml(commentsCurr);
-  
 }
 
 document.getElementById('people-actions').addEventListener('submit', checkPeople);
