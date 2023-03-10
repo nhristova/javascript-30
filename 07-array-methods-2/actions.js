@@ -69,7 +69,7 @@ const checkPeople = function (event) {
 
   const age = parseInt(this.input.value);
   if (isNaN(age)) {
-    containerMsgPeople.innerHTML = 'beforeend', `<p class="error">Input must be a number</p>`;
+    containerMsgPeople.innerHTML = `<p class="error">Input must be a number</p>`;
     return;
   }
 
