@@ -14,21 +14,51 @@ body {
   align-items: center;
 }
 
+button,
+input {
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+}
+
+h2,
+h3 {
+  color: #fff;
+}
+
 h2 {
   font-size: 2rem;
   text-align: center;
   font-weight: 700;
   margin: 70px 0 20px 0;
-  color: #fff;
+}
+
+hr {
+  background: #fff;
+  height: 2px;
+  border: none;
+  margin: 10px 0;
 }
 
 input {
+  min-width: 250px;
   font-size: 1em;
   border-radius: 5px;
   box-sizing: border-box;
-  border: 1px solid #EFEFEF;
   outline: none;
   padding: 6px 15px;
+}
+
+input, button, select {
+  border: 2px solid #EFEFEF;
+}
+
+input:active,
+input:focus,
+button:active,
+button:hover,
+button:focus,
+select:focus {
+  border: 2px solid var(--yellow);
+  outline: none;
 }
 
 select {
@@ -39,15 +69,19 @@ select {
 
 button {
   padding: 2px 15px;
-  border: 1px solid #EFEFEF;
   border-radius: 5px;
   font-size: 1em;
-  font-family: 'Poppins', Arial, Helvetica, sans-serif;;
+  cursor: pointer;
 }
 
+form {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+}
 
 .data-list {
-  min-width: 300px;
+  min-width: 400px;
   width: 100%;
   margin-top: 10px;
   border-collapse: separate;
@@ -64,7 +98,7 @@ button {
 .data-list th,
 .data-list td {
   border: 1px solid var(--blue);
-  padding: 5px 15px;
+  padding: 5px 10px;
 }
 
 .data-list tr:nth-child(even) {
@@ -80,19 +114,19 @@ button {
 }
 
 /* Border radius */
-table tr:first-child th:first-child {
+.data-list tr:first-child th:first-child {
   border-top-left-radius: var(--radius);
 }
 
-table tr:first-child th:last-child {
+.data-list tr:first-child th:last-child {
   border-top-right-radius: var(--radius);
 }
 
-table tr:last-child td:first-child {
+.data-list tr:last-child td:first-child {
   border-bottom-left-radius: var(--radius);
 }
 
-table tr:last-child td:last-child {
+.data-list tr:last-child td:last-child {
   border-bottom-right-radius: var(--radius);
 }
 
@@ -104,4 +138,9 @@ table tr:last-child td:last-child {
 .result {
   color: #4caf50;
   margin: 5px 0;
+}
+
+.btn-delete {
+  float: right;
+  cursor: pointer;
 }

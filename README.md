@@ -13,7 +13,7 @@ List:
 - [x] 4.  Array Cardio Day 1
 - [x] 5.  Flex Panel Gallery
 - [x] 6.  Type Ahead
-- [ ] 7.  Array Cardio Day 2
+- [x] 7.  Array Cardio Day 2
 - [ ] 8.  Fun with HTML5 Canvas
 - [ ] 9.  Dev Tools Domination
 - [ ] 10. Hold Shift and Check Checkboxes

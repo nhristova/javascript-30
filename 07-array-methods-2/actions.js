@@ -13,6 +13,8 @@ const comments = [
   { text: 'Nice Nice Nice!', id: 542328 }
 ];
 
+let commentsCurr = [...comments]
+
 // Some and Every Checks
 // Array.prototype.some() // is at least one person 19 or older?
 const currentYear = new Date().getFullYear();
@@ -26,16 +28,16 @@ console.log(`All people are over ${age}: `, checkAll(currentYear, age));
 // Array.prototype.find()
 // Find is like filter, but instead returns just the one you are looking for
 // find the comment with the ID of 823423
-const comment = comments.find(c => c.id === 823423);
+const comment = commentsCurr.find(c => c.id === 823423);
 console.log('Comment found: ', comment);
 
 // Array.prototype.findIndex()
 // Find the comment with this ID
 
-const commentId = comments.findIndex(c => c.id === 823423);
+const commentId = commentsCurr.findIndex(c => c.id === 823423);
 console.log('Comment index: ', commentId);
 // delete the comment with the ID of 823423
-const commentsFiltered = comments.filter(({ id }) => id !== 823423);
+const commentsFiltered = commentsCurr.filter(({ id }) => id !== 823423);
 console.log('Filtered comments: ', commentsFiltered);
 
 
@@ -43,6 +45,93 @@ console.log('Filtered comments: ', commentsFiltered);
 const peopleHtml = people.map(p => `<tr><td>${p.name}</td><td>${p.year}</td></tr>`).join('');
 document.getElementById('people-list').insertAdjacentHTML('beforeend', peopleHtml);
 
-const commentsHtml = comments.map(c => `<tr><td>${c.id}</td><td>${c.text}</td></tr>`).join('');
-document.getElementById('comments-list').insertAdjacentHTML('beforeend', commentsHtml);
+const getCommentRow = (c, index = 0) => `<tr>
+  <td>${index}</td><td>${c.id}</td>
+  <td>${c.text} <span data-id="${c.id}" class="btn-delete" title="delete">❌</span></td>
+</tr>`;
+const getCommentsHtml = (comments) => comments.map(getCommentRow).join('');
+const commentsTable = document.getElementById('comments-table');
+commentsTable.insertAdjacentHTML('beforeend', getCommentsHtml(commentsCurr));
 
+// handle user actions
+// People
+const messagesPeople = {
+  everytrue: `Everyone is`,
+  everyfalse: `Not everyone is`,
+  sometrue: `Some people are`,
+  somefalse: `No one is`,
+}
+
+const containerMsgPeople = document.getElementById('results-people');
+
+const checkPeople = function (event) {
+  event.preventDefault();
+
+  const age = parseInt(this.input.value);
+  if (isNaN(age)) {
+    containerMsgPeople.innerHTML = 'beforeend', `<p class="error">Input must be a number</p>`;
+    return;
+  }
+
+  // let result = this.action.value === 'every' ? checkAll(currentYear, age) : checkSome(currentYear, age);
+  // accessing array method with bracket notation
+  let result = people[this.action.value](p => p.year <= (currentYear - age));
+
+  containerMsgPeople.innerHTML = `<p class="result">${messagesPeople[this.action.value + result]} over ${age} years old.<p>`;
+}
+
+// Comments
+
+const messagesComments = {
+  find: (value, data) => `Found a comment for '${value}'`,
+  findIndex: (value, data) => `Element containing '${value}' is at index: ${data}`,
+  filter: (value, data) => `Found ${data.length} elements containing '${value}'`,
+  none: (value) => `<p class="error">No results for search value '${value}'</p>`,
+};
+
+const containerMsgComments = document.getElementById('results-comments');
+
+const searchComments = function (event) {
+  event.preventDefault();
+  const input = this.input.value;
+  const action = this.action.value;
+
+  if (action === 'reset') {
+    commentsCurr = comments;
+    commentsTable.innerHTML = getCommentsHtml(commentsCurr);
+    return;
+  }
+
+  const result = commentsCurr[action](c => c.id.toString().includes(input) || c.text.includes(input));
+
+  if (result === undefined) {
+    containerMsgComments.innerHTML = messagesComments.none(input);
+  } else {
+    containerMsgComments.innerHTML = messagesComments[action](input, result);
+  }
+
+  console.log(result);
+  
+  if (Array.isArray(result)) {
+    commentsCurr = result;
+    commentsTable.innerHTML = getCommentsHtml(result);
+  } else if (typeof result === 'object') {
+    commentsTable.innerHTML = getCommentRow(result);
+  }
+}
+
+const deleteComment = function (event) {
+  const id = event.target.getAttribute('data-id');
+  
+  if (!id) {
+    return;
+  }
+
+  commentsCurr = commentsCurr.filter(c => c.id !== +id);
+  commentsTable.innerHTML = getCommentsHtml(commentsCurr);
+  
+}
+
+document.getElementById('people-actions').addEventListener('submit', checkPeople);
+document.getElementById('comments-actions').addEventListener('submit', searchComments);
+commentsTable.addEventListener('click', deleteComment);

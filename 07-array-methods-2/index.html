@@ -15,15 +15,16 @@
   <h2>Array Methods</span></h2>
   <main>
     <section>
+      <h3>Check if people are over a certain age</h3>
       <form id="people-actions">
         <input type="text" name="input" placeholder="Enter age to check">
         <select name="actoin" id="action">
           <option value="some">Some</option>
           <option value="every">Every</option>
         </select>
-        <button id="check-people" type="submit">Check</button>
-        <div id="check-results"></div>
+        <button>Check</button>
       </form>
+      <div id="results-people" class="result"></div>
       <table class="data-list">
         <thead>
           <tr>
@@ -36,25 +37,28 @@
         </tbody>
       </table>
     </section>
-    <hr>
     <section>
-      <div id="comments-actions">
-        <input type="text">
+      <h3>Find comments</h3>
+      <form id="comments-actions">
+        <input name="input" type="text" placeholder="Enter (part of) id/comment">
         <select name="actoin" id="action">
-          <option value="find">Find</option>
+          <option value="find">Find First</option>
+          <option value="filter">Find All</option>
           <option value="findIndex">Find Index</option>
-          <option value="delete">Delete</option>
+          <option value="reset">Reset</option>
         </select>
-        <button id="search-comments">Go</button>
-      </div>
+        <button>Go</button>
+      </form>
+      <div id="results-comments" class="result"></div>
       <table class="data-list">
         <thead>
           <tr>
+            <th>Index</th>
             <th>Id</th>
             <th>Comment</th>
           </tr>
         </thead>
-        <tbody id="comments-list">
+        <tbody id="comments-table">
   
         </tbody>
       </table>
