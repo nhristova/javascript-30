@@ -1,7 +1,7 @@
 /** @type {HTMLCanvasElement} */
 const canvas = document.getElementById('draw');
-canvas.width = window.innerWidth - 10;
-canvas.height = window.innerHeight - 10;
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
 /** @type {CanvasRenderingContext2D} */
 const ctx = canvas.getContext('2d');
@@ -16,48 +16,56 @@ let lastX = 0;
 let lastY = 0;
 let hue = 0;
 
+const drawLineSegment = (x, y) => {
+  console.log(x,y);
+  
+  ctx.beginPath();
+  ctx.moveTo(lastX, lastY);
+  ctx.lineTo(x, y);
+  ctx.stroke();
+
+  [lastX, lastY] = [x, y];
+}
+
 /**
- * @param {MouseEvent|TouchEvent} event 
+ * @param {PointerEvent} event 
  * @returns 
  */
 const draw = (event) => {
   if (!isDrawing) return;
   // if (event.buttons !== 1) return;
 
-  //console.log(event);
   ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
-  ctx.beginPath();
-  ctx.moveTo(lastX, lastY);
-  ctx.lineTo(event.offsetX, event.offsetY);
-  ctx.stroke();
 
-  [lastX, lastY] = [event.offsetX, event.offsetY];
+  drawLineSegment(event.offsetX, event.offsetY);
 
+  // HSL https://mothereffinghsl.com/
   hue = hue >= 360 ? 0 : hue + 1;
   ctx.lineWidth <= 30 && ctx.lineWidth++;
 
-  // HSL https://mothereffinghsl.com/
 }
 
 const start = (event) => {
   isDrawing = true;
+  // For mobile no need to get coordinates from changedTouches
+  // event.offsetX is undefined, so ctx.moveTo returns immediately
   [lastX, lastY] = [event.offsetX, event.offsetY];
   ctx.lineWidth = 1;
 }
 
 const stop = (event) => {
   isDrawing = false;
+  console.log('stop');
+
 }
 
-// Desktop
-canvas.addEventListener('mousedown', start);
-canvas.addEventListener('mousemove', draw);
-canvas.addEventListener('mouseup', stop);
-canvas.addEventListener('mouseout', stop);
+const test = (event) => {
+  console.log(event);
 
-// Mobile
-// TODO: Test on mobile
-canvas.addEventListener('touchstart', start);
-canvas.addEventListener('touchmove', draw); //
-canvas.addEventListener('touchend', stop);
-canvas.addEventListener('touchcancel', stop);
+}
+
+// Use pointer events instead of mouse and touch events
+canvas.addEventListener('pointerdown', start);
+canvas.addEventListener('pointermove', draw); //
+canvas.addEventListener('pointerup', stop);
+canvas.addEventListener('pointerout', stop);
