@@ -111,7 +111,7 @@ const searchComments = function (event) {
 
   const result = commentsCurr[action](c => c.id.toString().includes(input) || c.text.includes(input));
   
-  if (!result || result === -1 || result.length === 0) {
+  if (result === undefined || result === -1 || result.length === 0) {
     containerMsgComments.innerHTML = messagesComments.none(input);
     return;
   } else {
